@@ -1,11 +1,14 @@
 import "./App.scss";
-
+import FutureWeather from "./components/FutureWeather";
+import Header from "./components/Header";
+import TempStats from "./components/TempStats";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-
+    <div className="wrapper">
+      <Header />
+      <TempStats />
+      <FutureWeather />
     </div>
   );
 };
