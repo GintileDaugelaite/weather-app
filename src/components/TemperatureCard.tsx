@@ -1,5 +1,5 @@
 import Thunder from "./../thunder.svg";
-import Sunny from "./../clear-day.svg"
+import Sunny from "./../assets/animated-icons/clear-day.svg"
 
 const TemperatureCard = () => {
   return (

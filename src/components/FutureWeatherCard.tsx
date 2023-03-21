@@ -1,4 +1,4 @@
-import Sun from "./../sun.png"
+import Sun from "./../assets/static-icons/sun.png"
 
 const FutureWeatherCard = () => {
   return (
