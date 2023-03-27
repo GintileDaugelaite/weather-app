@@ -9,7 +9,7 @@ const TemperatureCard = () => {
       </div>
       <div className="current-temperature__container">
         <div className="current-temperature__degrees">21°</div>
-        <div className="current-temperature__weather">Mostly sunny</div>
+        <div className="current-temperature__description">Mostly sunny</div>
       </div>
     </div>
   );

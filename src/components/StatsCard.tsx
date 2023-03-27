@@ -1,9 +1,9 @@
 const StatsCard = () => {
   return (
     <div className="stats">
-      <div className="stats__feels-like-temp">
+      <div className="stats__feels">
         <p>Feels like</p>
-        <p>10</p>
+        <p>10°</p>
       </div>
       <div className="stats__humidity">
         <p>Humidity</p>
