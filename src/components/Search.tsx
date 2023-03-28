@@ -1,12 +1,9 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import { useWeatherContext } from "../WeatherContext";
 
-type SearchProps = {
-  location: string;
-  setLocation: Dispatch<SetStateAction<string>>;
-  searchLocation: React.KeyboardEventHandler<HTMLInputElement>;
-};
 
-const Search = ({ location, setLocation, searchLocation }: SearchProps) => {
+const Search = () => {
+  const { location, setLocation, searchLocation } = useWeatherContext();
+
   return (
     <>
       <input

@@ -1,4 +1,8 @@
+import { useWeatherContext } from "../WeatherContext";
+
 const StatsCard = () => {
+  const { location, setLocation, searchLocation } = useWeatherContext();
+
   return (
     <div className="stats">
       <div className="stats__feels">
