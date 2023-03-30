@@ -1,5 +1,5 @@
 import "./App.scss";
-import FutureWeather from "./components/FutureWeather";
+import WeatherForecast from "./components/WeatherForecast";
 import Header from "./components/Header";
 import TempStats from "./components/TempStats";
 import { WeatherContextProvider } from "./WeatherContext";
@@ -13,7 +13,7 @@ const App: React.FC = () => {
       <Header
       />
       <TempStats/>
-      <FutureWeather />
+      <WeatherForecast />
       </WeatherContextProvider>
     </div>
   );

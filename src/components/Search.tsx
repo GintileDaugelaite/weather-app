@@ -4,6 +4,8 @@ import { useWeatherContext } from "../WeatherContext";
 const Search = () => {
   const { location, setLocation, searchLocation } = useWeatherContext();
 
+
+  
   return (
     <>
       <input

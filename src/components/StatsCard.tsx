@@ -1,25 +1,25 @@
 import { useWeatherContext } from "../WeatherContext";
 
 const StatsCard = () => {
-  const { location, setLocation, searchLocation } = useWeatherContext();
+  const { data } = useWeatherContext();
 
   return (
     <div className="stats">
       <div className="stats__feels">
         <p>Feels like</p>
-        <p>10°</p>
+        <p>{data.main.feels_like.toFixed()}°</p>
       </div>
       <div className="stats__humidity">
         <p>Humidity</p>
-        <p>30 %</p>
+        <p>{data.main.humidity}%</p>
       </div>
-      <div className="stats__sunrise">
-        <p>Sunrise</p>
-        <p>6:45 AM</p>
+      <div className="stats__clouds">
+        <p>Cloudiness</p>
+        <p>{data.clouds.all}%</p>
       </div>
-      <div className="stats__sunset">
-        <p>Sunset</p>
-        <p>7:14 PM</p>
+      <div className="stats__wind">
+        <p>Wind speed</p>
+        <p>{data.wind.speed.toFixed()} m/s</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 type WeatherData = {
@@ -110,18 +110,38 @@ type WeatherData = {
     const [location, setLocation] = useState<string>("");
 
     
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c9460a1dad58496d6599ed81f97e4637&units=metric`;
-
+  const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c9460a1dad58496d6599ed81f97e4637&units=metric`;
+  
   const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      axios.get(url).then((res) => {
+      axios.get(urlCurrentWeather).then((res) => {
         setData(res.data);
         console.log(res.data);
       });
       setLocation("");
     }
   };
-    
+
+
+// useEffect(() => {
+//     if (location !== "") {
+//       const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c9460a1dad58496d6599ed81f97e4637&units=metric`;
+//       axios.get(url).then((res) => {
+//         setData(res.data);
+//         console.log(res.data)
+//       })
+//       .catch((error) => console.error(error));
+//     }
+//   }, [location]);
+
+//   const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
+//     if (event.key === "Enter") {
+//       setLocation(event.currentTarget.value);
+//       event.currentTarget.value = "";
+//     }
+//   };
+
+
     return (
       <WeatherContext.Provider value={{ data, setData, location, setLocation,searchLocation }}>
         {children}
