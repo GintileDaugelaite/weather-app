@@ -232,6 +232,8 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
+  justify-items: center;
+  text-align: center;
 
   @include mobile-s {
     font-size: 14px;
@@ -243,18 +245,24 @@ body {
 
   @include tablet {
     gap: 1rem 3rem;
+    justify-items: inherit;
+    text-align: inherit;
   }
 
   @include laptop {
     gap: 1rem 3rem;
+    justify-items: inherit;
+    text-align: inherit;
   }
 
   @include desktop {
     gap: 1rem 3rem;
+    justify-items: inherit;
+    text-align: inherit;
   }
 }
 
-.future-weather-container {
+.weather-forecast-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -297,7 +305,7 @@ body {
   }
 }
 
-.future-weather-card {
+.weather-forecast-card {
   text-align: center;
   padding: 4px;
   border-radius: 10px;

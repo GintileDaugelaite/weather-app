@@ -1,5 +1,7 @@
 import ClearD from "./../assets/static-icons/sun.png";
-import Cloudy from "./../assets/static-icons/clouds.png";
+import CloudyD from "./../assets/static-icons/clouds.png";
+import FewCloudsN from "./../assets/static-icons/moon-cloudy.png";
+import FewCloudsD from "./../assets/static-icons/few-clouds.png";
 import Rainy from "./../assets/static-icons/rain.png";
 import Snowy from "./../assets/static-icons/snow.png";
 import Stormy from "./../assets/static-icons/storm.png";
@@ -38,7 +40,7 @@ const WeatherForecastCard = ({
   const ampm = time >= 12 ? "PM" : "AM";
   const formattedHours = time % 12 || 12;
 
-  let weatherIconSrc = Cloudy;
+  let weatherIconSrc = "";
 
   switch (weather[0]?.main) {
     case "Thunderstorm":
@@ -57,7 +59,11 @@ const WeatherForecastCard = ({
       weatherIconSrc = time >= 6 && time <= 18 ? ClearD : ClearN;
       break;
     case "Clouds":
-      weatherIconSrc = Cloudy;
+      weatherIconSrc = CloudyD;
+
+      if(weather[0].description === "few clouds") {
+        weatherIconSrc = time >= 6 && time <= 18 ? FewCloudsD : FewCloudsN;
+      }
       break;
     default:
       weatherIconSrc = Mist;
@@ -65,17 +71,17 @@ const WeatherForecastCard = ({
   }
 
   return (
-    <div className="future-weather-card">
-      <p className="future-weather-card__day">
+    <div className="weather-forecast-card">
+      <p className="weather-forecast-card__day">
         {formattedHours} {ampm}
       </p>
       <img
-        className="future-weather-card__img"
+        className="weather-forecast-card__img"
         alt="sun"
         src={weatherIconSrc}
         width="50px"
       /> 
-      <p className="future-weather-card__degrees">{main.temp.toFixed()}°</p>
+      <p className="weather-forecast-card__degrees">{main.temp.toFixed()}°</p>
     </div>
   );
 };
