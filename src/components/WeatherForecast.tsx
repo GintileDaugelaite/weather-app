@@ -1,6 +1,7 @@
 import WeatherForecastCard from "./WeatherForecastCard";
 import { useWeatherContext } from "../WeatherContext";
 
+
 const WeatherForecast = () => {
   const { forecastData } = useWeatherContext();
 

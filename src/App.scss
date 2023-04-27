@@ -39,7 +39,29 @@ body {
   font-family: "Nunito", sans-serif;
   color: black;
   background: url(./assets/backgrounds/background-sunny.svg);
+  height: 100%;
 }
+
+.homepage_search-input {
+  margin: 10rem 0 0 20px;
+    width: 22rem;
+    border-radius: 10px;
+    background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px 18px, #ffffff;
+    padding: 15px 5px 10px 20px;
+    border: none;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+
+    @include mobile-s {
+      width: 15rem;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+}
+
 
 .wrapper {
   display: flex;
@@ -47,6 +69,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  height: 100%;
 
   @include laptop {
     margin-top: 5%;
@@ -154,7 +177,7 @@ body {
   display: flex;
   flex-direction: row;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   @include tablet {
     justify-content: center;
@@ -168,6 +191,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 170px;
 
     @include tablet-s {
       border-right: 1px solid #ffffff73;

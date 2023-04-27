@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
 type WeatherData = {
@@ -166,7 +166,7 @@ type WeatherData = {
     setData: React.Dispatch<React.SetStateAction<WeatherData>>;
     location: string;
     setLocation: React.Dispatch<React.SetStateAction<string>>;
-    searchLocation: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+    searchLocation: () => void;
     forecastData: WeatherForecastData;
   };
 
@@ -196,8 +196,8 @@ type WeatherData = {
   const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c9460a1dad58496d6599ed81f97e4637&units=metric`;
   const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&cnt=5&appid=c9460a1dad58496d6599ed81f97e4637&units=metric`;
 
-  const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+  const searchLocation = () => {
+    // if (event.key === "Enter") {
       axios.all([
         axios.get(urlCurrentWeather),
         axios.get(urlForecast)
@@ -208,9 +208,10 @@ type WeatherData = {
         setForecastData(forecastRes.data)
         console.log(currentWeatherRes.data);
         console.log(forecastRes.data);
-      }));
+      })
+      );
       setLocation("");
-    }
+    // }
   };
 
 
