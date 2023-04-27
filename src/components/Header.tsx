@@ -1,7 +1,13 @@
 import Search from "./Search";
 import { useWeatherContext } from "../WeatherContext";
 
-const Header = () => {
+
+type SearchProps = {
+  className?: string;
+  onSearch: any;
+}
+
+const Header = ({onSearch}: SearchProps) => {
   const { data } = useWeatherContext();
 
   const date = new Date(data.dt * 1000);
@@ -11,7 +17,7 @@ const Header = () => {
   return (
     <section className="header">
       <div className="header__container">
-      <Search/>
+      <Search className="header__search-input" onSearch={onSearch}/>
       <h1 className="header__location">{data.name}, {data.sys.country}</h1>
       <p className="header__date">{formattedDate}</p>
       </div>
