@@ -7,13 +7,13 @@
 }
 
 @mixin tablet-s {
-  @media (min-width: 480px) and (max-width: 540px) {
+  @media (min-width: 480px) and (max-width: 615px) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width: 541px) and (max-width: 768px) {
+  @media (min-width: 616px) and (max-width: 768px) {
     @content;
   }
 }
@@ -38,30 +38,58 @@ body {
   margin: 0 auto;
   font-family: "Nunito", sans-serif;
   color: black;
-  background: url(./assets/backgrounds/background-sunny.svg);
-  height: 100%;
+  height: 100vh;
+  background: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
+  animation: gradient-bg 20s ease infinite;
+  background-size: 400% 400%;
+  }
+
+body.sunny { 
+  background: linear-gradient(-45deg, #51b1db, #61c2f6, #44a4c1, #6dc6e1, #6ab9d1, #5cb7b1, #7cc6eb, #feffb8);
+  background-size: 400% 400%;
+  animation: gradient-bg 20s ease infinite;
+
+}
+
+body.cloudy {
+  background: linear-gradient(-45deg, #454b4b, #6d7577, #6f8287, #648189, #849faa );
+  background-size: 400% 400%;
+  animation: gradient-bg 20s ease infinite;
+  
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .homepage_search-input {
-  margin: 10rem 0 0 20px;
-    width: 22rem;
-    border-radius: 10px;
-    background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px 18px, #ffffff;
-    padding: 15px 5px 10px 20px;
-    border: none;
-    font-family: "Nunito", sans-serif;
-    font-weight: 600;
+  margin-top: 10%;
+  width: 22rem;
+  border-radius: 10px;
+  background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px
+      18px,
+    #ffffff;
+  padding: 15px 5px 10px 20px;
+  border: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
 
-    @include mobile-s {
-      width: 15rem;
-    }
+  @include mobile-s {
+    width: 15rem;
+  }
 
-    &:focus {
-      outline: none;
-    }
-
+  &:focus {
+    outline: none;
+  }
 }
-
 
 .wrapper {
   display: flex;
@@ -70,14 +98,19 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  
+  // width: 100vw;
 
-  @include laptop {
-    margin-top: 5%;
-  }
+  // @include tablet {
+  //   margin-top: 5%;
+  // }
+  // @include laptop {
+  //   margin-top: 5%;
+  // }
 
-  @include desktop {
-    margin-top: 5%;
-  }
+  // @include desktop {
+  //   margin-top: 5%;
+  // }
 }
 
 .header {
@@ -88,9 +121,9 @@ body {
   justify-content: flex-start;
   color: #ffffff;
 
-// @include tablet {
-//   margin-top: 5%;
-// }
+  // @include tablet {
+  //   margin-top: 5%;
+  // }
 
   @include laptop {
     width: 80%;
@@ -119,14 +152,17 @@ body {
   }
 
   &__search-input {
-    margin: 10px 0 0 20px;
+    margin-left: 20px;
     width: 20rem;
     border-radius: 10px;
-    background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px 7px, #ffffff;
+    background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px
+        7px,
+      #ffffff;
     padding: 5px 5px 5px 20px;
     border: none;
     font-family: "Nunito", sans-serif;
     font-weight: 600;
+    margin-top: 3%;
 
     @include mobile-s {
       width: 15rem;
@@ -150,26 +186,26 @@ body {
 
   @include tablet-s {
     gap: 0;
-  flex-direction: row;
-  justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   @include tablet {
     flex-direction: row;
-    gap: 5%;
-    justify-content: space-evenly;
+    gap: 0%;
+    justify-content: center;
   }
 
   @include laptop {
     flex-direction: row;
     width: 80%;
-    gap: 10%;
+    gap: 0%;
   }
 
   @include desktop {
     flex-direction: row;
     width: 60%;
-    gap: 10%;
+    gap: 0%;
   }
 }
 
@@ -178,6 +214,7 @@ body {
   flex-direction: row;
   text-align: center;
   justify-content: space-around;
+  align-items: center;
 
   @include tablet {
     justify-content: center;
@@ -194,22 +231,7 @@ body {
     min-width: 170px;
 
     @include tablet-s {
-      border-right: 1px solid #ffffff73;
-      padding-right: 5rem;
-    }
-
-    @include tablet {
-      border-right: 1px solid #ffffff73;
-      padding-right: 5rem;
-    }
-
-    @include laptop {
-      border-right: 1px solid #ffffff73;
-      padding-right: 5rem;
-    }
-    @include desktop {
-      border-right: 1px solid #ffffff73;
-      padding-right: 5rem;
+      min-width: 0;
     }
   }
 
@@ -265,24 +287,32 @@ body {
 
   @include tablet-s {
     gap: 0 1rem;
+    border-left: 1px solid #ffffff73;
+    padding-left: 1rem;
   }
 
   @include tablet {
-    gap: 1rem 3rem;
+    gap: 1rem 2rem;
     justify-items: inherit;
     text-align: inherit;
+    border-left: 1px solid #ffffff73;
+    padding-left: 3rem;
   }
 
   @include laptop {
     gap: 1rem 3rem;
     justify-items: inherit;
     text-align: inherit;
+    border-left: 1px solid #ffffff73;
+    padding-left: 3rem;
   }
 
   @include desktop {
     gap: 1rem 3rem;
     justify-items: inherit;
     text-align: inherit;
+    border-left: 1px solid #ffffff73;
+    padding-left: 5rem;
   }
 }
 

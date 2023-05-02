@@ -7,6 +7,7 @@ import Search from "./components/Search";
 import { useState} from "react";
 
 const App: React.FC = () => {
+
   const [searched, setSearched] = useState(false);
 
   const handleSearch = () => {
