@@ -24,7 +24,10 @@ const App: React.FC = () => {
             <WeatherForecast />
           </>
         ) : (
+          <div className="wrapper__container">
+          <h1 className="wrapper__header">Weather Forecast</h1>
           <Search className={`homepage_search-input`} onSearch={handleSearch} />
+          </div>
         )}
       </WeatherContextProvider>
     </div>
