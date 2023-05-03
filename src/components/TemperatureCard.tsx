@@ -6,8 +6,8 @@ import Drizzle from "./../assets/animated-icons/drizzle.svg";
 import Mist from "./../assets/animated-icons/mist.svg";
 import ClearDay from "./../assets/animated-icons/clear-day.svg";
 import ClearNight from "./../assets/animated-icons/clear-night.svg";
-import FewCloudsD from "./../assets/animated-icons/partly-cloudy-day.svg"
-import FewCloudsN from "./../assets/animated-icons/partly-cloudy-night.svg"
+import FewCloudsD from "./../assets/animated-icons/partly-cloudy-day.svg";
+import FewCloudsN from "./../assets/animated-icons/partly-cloudy-night.svg";
 
 import { useWeatherContext } from "../WeatherContext";
 
@@ -37,7 +37,7 @@ const TemperatureCard = () => {
     case "Clouds":
       weatherIconSrc = Cloudy;
 
-      if(data.weather[0].description === "few clouds") {
+      if (data.weather[0].description === "few clouds") {
         weatherIconSrc = currentTime >= 19 ? FewCloudsN : FewCloudsD;
       }
       break;
@@ -46,10 +46,8 @@ const TemperatureCard = () => {
       break;
   }
 
-
   return (
     <div className="current-temperature">
-      
       <div className="current-temperature__img">
         <img
           src={weatherIconSrc}

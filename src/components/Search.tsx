@@ -1,21 +1,20 @@
 import { useWeatherContext } from "../WeatherContext";
 
-
 type SearchProps = {
-  className?: string,
+  className?: string;
   onSearch: any;
-}
+};
 
-const Search = ({className, onSearch}: SearchProps) => {
+const Search = ({ className, onSearch }: SearchProps) => {
   const { location, setLocation, searchLocation } = useWeatherContext();
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       searchLocation();
-      onSearch()
+      onSearch();
     }
   };
-  
+
   return (
     <>
       <input
@@ -23,7 +22,7 @@ const Search = ({className, onSearch}: SearchProps) => {
         className={className}
         placeholder="Enter location"
         value={location}
-        onChange={event => setLocation(event.target.value)}
+        onChange={(event) => setLocation(event.target.value)}
         onKeyDown={handleKeyDown}
       />
     </>

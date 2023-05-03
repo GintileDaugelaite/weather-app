@@ -61,7 +61,7 @@ const WeatherForecastCard = ({
     case "Clouds":
       weatherIconSrc = CloudyD;
 
-      if(weather[0].description === "few clouds") {
+      if (weather[0].description === "few clouds") {
         weatherIconSrc = time >= 6 && time <= 18 ? FewCloudsD : FewCloudsN;
       }
       break;
@@ -80,7 +80,7 @@ const WeatherForecastCard = ({
         alt="sun"
         src={weatherIconSrc}
         width="50px"
-      /> 
+      />
       <p className="weather-forecast-card__degrees">{main.temp.toFixed()}°</p>
     </div>
   );
