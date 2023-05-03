@@ -1,0 +1,56 @@
+@mixin mobile-s {
+    @media (min-width: 280px) and (max-width: 320px) {
+      @content;
+    }
+  }
+  
+  @mixin tablet-s {
+    @media (min-width: 480px) and (max-width: 615px) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: 616px) and (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin laptop {
+    @media (min-width: 769px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: 1025px) {
+      @content;
+    }
+  }
+
+@mixin animated-background {
+    animation: gradient-bg 20s ease infinite;
+    background-size: 400% 400%;
+}
+
+@mixin responsive-grid($vertical, $horizontal, $padding) {
+    gap: $vertical $horizontal;
+    justify-items: inherit;
+    text-align: inherit;
+    border-left: 1px solid #ffffff73;
+    padding-left: $padding;
+}
+
+@mixin regular-flexbox($flex-direction, $wrap, $justify-content, $align-items: unset) {
+    display: flex;
+    flex-direction: $flex-direction;
+    flex-wrap: $wrap;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin temp-stats-responsive($justify-content: unset) {
+    gap: 0;
+    flex-direction: row;
+    justify-content: $justify-content;
+}

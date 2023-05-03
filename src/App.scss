@@ -1,34 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
-
-@mixin mobile-s {
-  @media (min-width: 280px) and (max-width: 320px) {
-    @content;
-  }
-}
-
-@mixin tablet-s {
-  @media (min-width: 480px) and (max-width: 615px) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (min-width: 616px) and (max-width: 768px) {
-    @content;
-  }
-}
-
-@mixin laptop {
-  @media (min-width: 769px) and (max-width: 1024px) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: 1025px) {
-    @content;
-  }
-}
+@import "./styles/mixins";
+@import "./styles/variables";
 
 * {
   box-sizing: border-box;
@@ -36,26 +8,21 @@
 
 body {
   margin: 0 auto;
-  font-family: "Nunito", sans-serif;
+  font-family: $regular-font;
   color: black;
   height: 100vh;
-  background: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
-  animation: gradient-bg 20s ease infinite;
-  background-size: 400% 400%;
-  }
+  background: linear-gradient(-45deg, $default-background);
+  @include animated-background;
+}
 
-body.sunny { 
-  background: linear-gradient(-45deg, #51b1db, #61c2f6, #44a4c1, #6dc6e1, #6ab9d1, #5cb7b1, #7cc6eb, #feffb8);
-  background-size: 400% 400%;
-  animation: gradient-bg 20s ease infinite;
-
+body.sunny {
+  background: linear-gradient(-45deg, $background-sunny);
+  @include animated-background;
 }
 
 body.cloudy {
-  background: linear-gradient(-45deg, #454b4b, #6d7577, #6f8287, #648189, #849faa );
-  background-size: 400% 400%;
-  animation: gradient-bg 20s ease infinite;
-  
+  background: linear-gradient(-45deg, $background-cloudy);
+  @include animated-background;
 }
 
 @keyframes gradient-bg {
@@ -72,58 +39,75 @@ body.cloudy {
 
 .homepage_search-input {
   margin-top: 10%;
-  width: 22rem;
-  border-radius: 10px;
+  width: 12rem;
+  border-radius: $regular-radius;
   background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px
       18px,
-    #ffffff;
+    #ffffffac;
   padding: 15px 5px 10px 20px;
   border: none;
-  font-family: "Nunito", sans-serif;
-  font-weight: 600;
+  font-family: $regular-font;
+  font-weight: $bold;
 
-  @include mobile-s {
-    width: 15rem;
+  @include tablet-s {
+    width: $search-width-L;
+  }
+
+  @include tablet {
+    width: $search-width-L;
+  }
+
+  @include laptop {
+    width: $search-width-L;
+  }
+
+  @include desktop {
+    width: $search-width-L;
   }
 
   &:focus {
     outline: none;
+    background-color: $primary-color;
   }
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  @include regular-flexbox(column, wrap, center, center);
   height: 100%;
-  
-  // width: 100vw;
 
-  // @include tablet {
-  //   margin-top: 5%;
-  // }
-  // @include laptop {
-  //   margin-top: 5%;
-  // }
+  &__container {
+    margin-top: 10%;
+    background-color: rgba(255, 255, 255, 0.32);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
 
-  // @include desktop {
-  //   margin-top: 5%;
-  // }
+    @include tablet-s {
+      padding: 40px;
+    }
+
+    @include tablet {
+      padding: 60px;
+    }
+
+    @include laptop {
+      padding: 60px;
+    }
+
+    @include desktop {
+      padding: 60px;
+    }
+  }
+
+  &__header {
+    color: white;
+  }
 }
 
 .header {
   width: 100%;
-  // border: 3px solid blue;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  color: #ffffff;
-
-  // @include tablet {
-  //   margin-top: 5%;
-  // }
+  @include regular-flexbox(column, nowrap, flex-start);
+  color: $primary-color;
 
   @include laptop {
     width: 80%;
@@ -142,8 +126,6 @@ body.cloudy {
   }
 
   &__date {
-    // align-self: flex-end;
-    // margin: 0 10px 10px 0;
     margin: 4px 0 10px 20px;
 
     @include mobile-s {
@@ -154,14 +136,14 @@ body.cloudy {
   &__search-input {
     margin-left: 20px;
     width: 20rem;
-    border-radius: 10px;
+    border-radius: $regular-radius;
     background: url(./assets/static-icons/search-icon.svg) no-repeat scroll 7px
         7px,
-      #ffffff;
+      $primary-color;
     padding: 5px 5px 5px 20px;
     border: none;
-    font-family: "Nunito", sans-serif;
-    font-weight: 600;
+    font-family: $regular-font;
+    font-weight: $bold;
     margin-top: 3%;
 
     @include mobile-s {
@@ -175,59 +157,40 @@ body.cloudy {
 }
 
 .temp-stats {
+  @include regular-flexbox(column, nowrap, center);
   width: 100%;
-  // border: 3px solid yellow;
-  display: flex;
-  flex-direction: column;
-  //   flex-direction: row; //ipad,laptop
-  justify-content: center;
   gap: 20%;
-  color: #ffffff;
+  color: $primary-color;
 
   @include tablet-s {
-    gap: 0;
-    flex-direction: row;
-    justify-content: space-evenly;
+    @include temp-stats-responsive(space-evenly);
   }
 
   @include tablet {
-    flex-direction: row;
-    gap: 0%;
-    justify-content: center;
+    @include temp-stats-responsive(center);
   }
 
   @include laptop {
-    flex-direction: row;
+    @include temp-stats-responsive;
     width: 80%;
-    gap: 0%;
   }
 
   @include desktop {
-    flex-direction: row;
+    @include temp-stats-responsive;
     width: 60%;
-    gap: 0%;
   }
 }
 
 .current-temperature {
-  display: flex;
-  flex-direction: row;
+  @include regular-flexbox(row, nowrap, space-around, center);
   text-align: center;
-  justify-content: space-around;
-  align-items: center;
 
   @include tablet {
     justify-content: center;
   }
 
-  @include laptop {
-    // flex-direction: column;
-  }
-
   &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include regular-flexbox(column, nowrap, center);
     min-width: 170px;
 
     @include tablet-s {
@@ -286,33 +249,19 @@ body.cloudy {
   }
 
   @include tablet-s {
-    gap: 0 1rem;
-    border-left: 1px solid #ffffff73;
-    padding-left: 1rem;
+    @include responsive-grid(0, 1rem, 1rem);
   }
 
   @include tablet {
-    gap: 1rem 2rem;
-    justify-items: inherit;
-    text-align: inherit;
-    border-left: 1px solid #ffffff73;
-    padding-left: 3rem;
+    @include responsive-grid(1rem, 2rem, 3rem);
   }
 
   @include laptop {
-    gap: 1rem 3rem;
-    justify-items: inherit;
-    text-align: inherit;
-    border-left: 1px solid #ffffff73;
-    padding-left: 3rem;
+    @include responsive-grid(1rem, 3rem, 3rem);
   }
 
   @include desktop {
-    gap: 1rem 3rem;
-    justify-items: inherit;
-    text-align: inherit;
-    border-left: 1px solid #ffffff73;
-    padding-left: 5rem;
+    @include responsive-grid(1rem, 3rem, 5rem);
   }
 }
 
@@ -320,7 +269,6 @@ body.cloudy {
   width: 100%;
   display: flex;
   flex-direction: column;
-  // border: 3px solid green;
 
   @include tablet {
     margin-top: 5%;
@@ -338,7 +286,7 @@ body.cloudy {
 
   &__title {
     margin: 5px 0 0 20px;
-    color: #ffffff;
+    color: $primary-color;
 
     @include mobile-s {
       font-size: 14px;
@@ -346,10 +294,7 @@ body.cloudy {
   }
 
   &__cards {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    @include regular-flexbox(row, nowrap, space-evenly, center);
     padding: 10px;
     flex-basis: auto;
 
@@ -362,8 +307,8 @@ body.cloudy {
 .weather-forecast-card {
   text-align: center;
   padding: 4px;
-  border-radius: 10px;
-  background: #ffffff;
+  border-radius: $regular-radius;
+  background: $primary-color;
   flex: 0 1 18%;
 
   &__day {
